@@ -6,27 +6,27 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 
-public class MainActivity extends AppCompatActivity {
+public class MainPageActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+        setContentView(R.layout.activity_main_page);
 
-        Button library_button = findViewById(R.id.detail_button);
+        Button library_button = findViewById(R.id.library_button);
         library_button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(MainActivity.this,Main2Activity.class);
+                Intent intent = new Intent(MainPageActivity.this,Main2Activity.class);
                 startActivity(intent);
             }
         });
 
-        Button classify_button = findViewById(R.id.class_button);
+        Button classify_button = findViewById(R.id.classify_button);
         classify_button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(MainActivity.this,ClassifyActivity.class);
+                Intent intent = new Intent(MainPageActivity.this,CameraAPIActivity.class);
                 startActivity(intent);
             }
         });

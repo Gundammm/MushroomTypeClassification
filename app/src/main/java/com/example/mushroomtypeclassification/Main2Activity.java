@@ -23,7 +23,7 @@ import static com.example.mushroomtypeclassification.DatabaseHelper.MUSHROOM_TAB
 
 public class Main2Activity extends AppCompatActivity{
 
-    private static final String TAG = MainActivity.class.getName();
+    private static final String TAG = Main2Activity.class.getName();
 
     private DatabaseHelper mHelper;
     private SQLiteDatabase mDb;

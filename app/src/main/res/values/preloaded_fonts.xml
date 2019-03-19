@@ -2,11 +2,14 @@
 <resources>
     <array name="preloaded_fonts" translatable="false">
         <item>@font/armata</item>
+        <item>@font/berkshire_swash</item>
         <item>@font/chewy</item>
+        <item>@font/dosis_semibold</item>
         <item>@font/kanit_thin</item>
         <item>@font/kavoon</item>
         <item>@font/mitr</item>
         <item>@font/mitr_medium</item>
+        <item>@font/nova_mono</item>
         <item>@font/nunito_bold</item>
         <item>@font/pridi_extralight</item>
         <item>@font/pridi_medium</item>

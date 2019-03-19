@@ -6,5 +6,6 @@
     <string name="mushroom_search">Mushroom Search</string>
     <string name="todo">TODO</string>
     <string name="mushroom">Mushroom</string>
+    <string name="take_picture">Take picture</string>
     <string name="type_classification">TYPE CLASSIFICATION</string>
 </resources>
