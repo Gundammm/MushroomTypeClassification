@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@drawable/newbg3"
     tools:context=".SearchActivity">
 
     <TextView
@@ -54,14 +55,14 @@
         android:layout_width="84dp"
         android:layout_height="45dp"
         android:layout_marginStart="8dp"
+        android:contentDescription="TODO"
         android:paddingEnd="30dp"
         app:layout_constraintBottom_toBottomOf="@+id/query_editText"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@+id/query_editText"
         app:layout_constraintTop_toTopOf="@+id/query_editText"
         app:layout_constraintVertical_bias="0.0"
-        app:srcCompat="@drawable/search"
-        android:contentDescription="TODO" />
+        app:srcCompat="@drawable/search" />
 
     <ListView
         android:id="@+id/result_search"

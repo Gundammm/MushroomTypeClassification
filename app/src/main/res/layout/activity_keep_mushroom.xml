@@ -1,0 +1,195 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/newbg3"
+    tools:context="com.example.mushroomtypeclassification.KeepMushroomActivity" >
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:layout_editor_absoluteX="71dp"
+        tools:layout_editor_absoluteY="0dp">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <ImageView
+                android:id="@+id/imageView2"
+                android:layout_width="170dp"
+                android:layout_height="70dp"
+                android:layout_marginLeft="120dp"
+                android:layout_marginTop="10dp"
+                app:srcCompat="@drawable/logo" />
+
+            <TextView
+                android:id="@+id/keepText"
+                android:layout_width="372dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="20dp"
+                android:layout_marginTop="10dp"
+                android:layout_marginEnd="20dp"
+                android:layout_marginBottom="20dp"
+                android:background="@drawable/shape_circle"
+                android:fontFamily="@font/mitr"
+                android:text="วิธีเตรียมตัวเก็บเห็ด"
+                android:textAlignment="center"
+                android:textAllCaps="true"
+                android:textColor="#fff"
+                android:textSize="30sp"
+                android:textStyle="bold"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintVertical_bias="0.052" />
+
+            <TextView
+                android:id="@+id/textView8"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/mitr"
+                android:paddingLeft="20dp"
+                android:paddingRight="20dp"
+                android:text="    1. ท่านต้องรู้จักเห็ดชนิดที่จะเก็บอย่างถ่องแท้และแน่ใจ ท่านควรเก็บเฉพาะดอกที่อายุน้อยและสด ดอกเห็ดที่โตเต็มที่แล้วจะเน่าง่าย และให้รสชาติไม่ดี"
+                android:textAlignment="viewStart"
+                android:textAllCaps="false"
+                android:textSize="18sp" />
+
+            <ImageView
+                android:id="@+id/imageView3"
+                android:layout_width="60dp"
+                android:layout_height="60dp"
+                android:layout_marginLeft="170dp"
+                app:srcCompat="@drawable/mush1" />
+
+            <TextView
+                android:id="@+id/textView17"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/mitr"
+                android:paddingLeft="20dp"
+                android:paddingRight="20dp"
+                android:text="    2. ควรเก็บเห็ดแต่ละชนิดใส่ในถุงกระดาษไขแยกกันแล้วนำไปใส่ลงในตะกร้า ไม่ควรใช้ถุงพลาสติกใส่เห็ด ควรใช้ตะกร้าที่มีก้นแบน ปากกว้าง มีความลึกพอสมควร และมีหูหิ้วที่แข็งแรง เพื่อป้องกันการกดทับกันของห่อ ดอกเห็ด"
+                android:textAlignment="textStart"
+                android:textSize="18sp" />
+
+            <ImageView
+                android:id="@+id/imageView8"
+                android:layout_width="60dp"
+                android:layout_height="60dp"
+                android:layout_marginLeft="170dp"
+                app:srcCompat="@drawable/basket" />
+
+            <TextView
+                android:id="@+id/textView9"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/mitr"
+                android:paddingLeft="20dp"
+                android:paddingRight="20dp"
+                android:text="    3. เก็บดอกเห็ดที่มีส่วนประกอบต่าง ๆ สมบูรณ์เพื่อจะได้แน่ใจว่า เป็นชนิดที่ถูกต้อง แต่ก่อนจะห่อด้วยกระดาษไข ควรแยกสิ่งสกปรก เช่น เศษ ดิน และเศษซากพืชออกให้หมดโดยใช้มีดขนาดเล็กเนื้อน"
+                android:textAlignment="textStart"
+                android:textSize="18sp" />
+
+            <TextView
+                android:id="@+id/textView10"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/mitr"
+                android:paddingLeft="20dp"
+                android:paddingRight="20dp"
+                android:text="    4. ควรมีกระดาษแผ่นเล็ก ๆ สำหรับจดบันทึกสิ่งที่เห็ดขึ้นอยู่ ชนิด ต้นไม้ที่อยู่ข้างเคียง และระดับความสูงของพื้นที่"
+                android:textAlignment="textStart"
+                android:textSize="18sp" />
+
+            <TextView
+                android:id="@+id/textView11"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/mitr"
+                android:paddingLeft="20dp"
+                android:paddingRight="20dp"
+                android:text="    5. ถ้าไม่คุ้นเคยกับสถานที่ที่ไปเก็บเห็ด ควรนำเข็มทิศติดตัวไปใช้ด้วย"
+                android:textAlignment="textStart"
+                android:textSize="18sp" />
+
+            <ImageView
+                android:id="@+id/imageView9"
+                android:layout_width="60dp"
+                android:layout_height="60dp"
+                android:layout_marginLeft="170dp"
+                app:srcCompat="@drawable/compass" />
+
+            <TextView
+                android:id="@+id/textView12"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/mitr"
+                android:paddingLeft="20dp"
+                android:paddingRight="20dp"
+                android:text="    6. ควรวางตะกร้าใส่เห็ดในที่ที่มีอากาศถ่ายเทดี และอยู่ในที่ร่มซึ่ง เย็นและแห้ง หรือเก็บในตู้เย็นเมื่อกลับถึงบ้าน จนถึงเวลาที่จะปรุงอาหาร ซึ่ง ควรจะทำโดยเร็ว"
+                android:textAlignment="textStart"
+                android:textSize="18sp" />
+
+            <TextView
+                android:id="@+id/textView13"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/mitr"
+                android:paddingLeft="20dp"
+                android:paddingRight="20dp"
+                android:text="    7. การทำความสะอาดดอกเห็ด ให้ผ่าดอกเห็ดตามยาวเพื่อตรวจว่า ภายในเน่าหรือมีตัวหนอนอยู่หรือไม่ แล้วจึงล้างด้วยน้ำ"
+                android:textAlignment="textStart"
+                android:textSize="18sp" />
+
+            <TextView
+                android:id="@+id/textView14"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/mitr"
+                android:paddingLeft="20dp"
+                android:paddingRight="20dp"
+                android:text="    8. ถ้าเกิดความสงสัยว่าเห็ดที่เก็บมาจะรับประทานได้หรือไม่ ควรนำไปทิ้ง อย่าเสี่ยงรับประทาน เพราะอาจเกิดโทษได้"
+                android:textAlignment="textStart"
+                android:textSize="18sp" />
+
+            <ImageView
+                android:id="@+id/imageView10"
+                android:layout_width="60dp"
+                android:layout_height="60dp"
+                android:layout_marginLeft="170dp"
+                app:srcCompat="@drawable/cancel" />
+
+            <TextView
+                android:id="@+id/textView15"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/mitr"
+                android:paddingLeft="20dp"
+                android:paddingRight="20dp"
+                android:text="    9. ถ้ารับประทานเห็ดพิษ ควรล้วงคอให้อาเจียนและพบแพทย์โดยด่วน พร้อมทั้งมีหนังสือคู่มือเห็ดติดตัวไปพบแพทย์ด้วย"
+                android:textAlignment="textStart"
+                android:textSize="18sp" />
+
+            <ImageView
+                android:id="@+id/imageView11"
+                android:layout_width="60dp"
+                android:layout_height="60dp"
+                android:layout_marginLeft="170dp"
+                app:srcCompat="@drawable/hospital" />
+
+            <TextView
+                android:id="@+id/textView18"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp" />
+
+        </LinearLayout>
+    </ScrollView>
+
+</android.support.constraint.ConstraintLayout>

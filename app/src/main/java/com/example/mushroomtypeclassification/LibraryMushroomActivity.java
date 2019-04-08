@@ -21,9 +21,7 @@ import static com.example.mushroomtypeclassification.DatabaseHelper.COL_THAI;
 import static com.example.mushroomtypeclassification.DatabaseHelper.COL_TYPE;
 import static com.example.mushroomtypeclassification.DatabaseHelper.MUSHROOM_TABLE;
 
-public class Main2Activity extends AppCompatActivity{
-
-    private static final String TAG = Main2Activity.class.getName();
+public class LibraryMushroomActivity extends AppCompatActivity{
 
     private DatabaseHelper mHelper;
     private SQLiteDatabase mDb;
@@ -37,16 +35,16 @@ public class Main2Activity extends AppCompatActivity{
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main2);
+        setContentView(R.layout.activity_library_mushroom);
 
-        mHelper = new DatabaseHelper(Main2Activity.this);
+        mHelper = new DatabaseHelper(LibraryMushroomActivity.this);
         mDb = mHelper.getWritableDatabase();
 
         Button searchButton = findViewById(R.id.search_button);
         searchButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(Main2Activity.this,SearchActivity.class);
+                Intent intent = new Intent(LibraryMushroomActivity.this,SearchActivity.class);
                 intent.putExtra("science", sciencename);
                 intent.putExtra("thai", thainame);
                 startActivity(intent);
@@ -89,7 +87,7 @@ public class Main2Activity extends AppCompatActivity{
 
     private void setupListView(){
         final MushroomListAdapter adapter = new MushroomListAdapter(
-                Main2Activity.this,
+                LibraryMushroomActivity.this,
                 R.layout.item_mushroom,
                 mMushroomItemList
         );
@@ -99,12 +97,13 @@ public class Main2Activity extends AppCompatActivity{
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 final MushroomItem mushItem = mMushroomItemList.get(position);
-                Intent intent = new Intent(Main2Activity.this,ShowDetailActivity.class);
+                Intent intent = new Intent(LibraryMushroomActivity.this,ShowDetailActivity.class);
                 intent.putExtra("science", mushItem.science);
                 intent.putExtra("thai", mushItem.thai);
                 intent.putExtra("id",mushItem._id);
                 intent.putExtra("image",mushItem.image);
                 intent.putExtra("detail",mushItem.detail);
+                intent.putExtra("type",mushItem.type);
                 startActivity(intent);
             }
         });

@@ -80,11 +80,20 @@ public class SearchActivity extends AppCompatActivity{
             int intText = (int) text;
             //eng
             if (intText <= 122) {
-                String newQuery = queryText.toLowerCase();
+//                String newQuery = queryText.toLowerCase();
+//                for (int i = 0; i < sciencename.size(); i++) {
+//                    String txtScience = sciencename.get(i);
+//                    String newtxtScience = txtScience.toLowerCase();
+//                    Boolean found = newtxtScience.contains(newQuery);
+//                    if (found == true){
+//                        result += sciencename.get(i) + "\n";
+//                        countFound++;
+//                        resultSearch.add(txtScience);}
+//                }
+
                 for (int i = 0; i < sciencename.size(); i++) {
                     String txtScience = sciencename.get(i);
-                    String newtxtScience = txtScience.toLowerCase();
-                    Boolean found = newtxtScience.contains(newQuery);
+                    Boolean found = txtScience.contains(queryText);
                     if (found == true){
                         result += sciencename.get(i) + "\n";
                         countFound++;

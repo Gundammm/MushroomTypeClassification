@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/bg"
+    android:background="@drawable/bggggg"
     tools:context="com.example.mushroomtypeclassification.MainPageActivity">
 
     <Button
@@ -12,18 +12,18 @@
         android:layout_width="120dp"
         android:layout_height="120dp"
         android:layout_marginStart="8dp"
-        android:layout_marginTop="50dp"
+        android:layout_marginTop="100dp"
         android:layout_marginEnd="8dp"
         android:layout_marginBottom="8dp"
         android:background="@drawable/font1"
-        app:layout_constraintBottom_toTopOf="@+id/button4"
+        app:layout_constraintBottom_toTopOf="@+id/keep_button"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView6" />
 
     <Button
-        android:id="@+id/button4"
+        android:id="@+id/keep_button"
         android:layout_width="115dp"
         android:layout_height="115dp"
         android:layout_marginTop="100dp"
@@ -44,14 +44,14 @@
         android:layout_height="115dp"
         android:layout_marginEnd="8dp"
         android:background="@drawable/bt2"
-        app:layout_constraintBottom_toBottomOf="@+id/button4"
-        app:layout_constraintEnd_toStartOf="@+id/button7"
+        app:layout_constraintBottom_toBottomOf="@+id/keep_button"
+        app:layout_constraintEnd_toStartOf="@+id/firstaid_button"
         app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toEndOf="@+id/button4"
-        app:layout_constraintTop_toTopOf="@+id/button4" />
+        app:layout_constraintStart_toEndOf="@+id/keep_button"
+        app:layout_constraintTop_toTopOf="@+id/keep_button" />
 
     <Button
-        android:id="@+id/button7"
+        android:id="@+id/firstaid_button"
         android:layout_width="115dp"
         android:layout_height="115dp"
         android:background="@drawable/bt3"
@@ -67,14 +67,13 @@
         android:layout_width="wrap_content"
         android:layout_height="37dp"
         android:layout_marginStart="8dp"
-        android:layout_marginTop="40dp"
         android:layout_marginEnd="8dp"
         android:fontFamily="@font/dosis_semibold"
         android:text="MUSHROOM"
         android:textSize="30sp"
         app:layout_constraintBottom_toTopOf="@+id/textView6"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.24000001"

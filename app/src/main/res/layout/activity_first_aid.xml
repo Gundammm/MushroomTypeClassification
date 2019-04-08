@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/newbg3"
+    tools:context="com.example.mushroomtypeclassification.FirstAidActivity">
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:layout_editor_absoluteX="71dp"
+        tools:layout_editor_absoluteY="0dp">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <ImageView
+                android:id="@+id/imageView2"
+                android:layout_width="170dp"
+                android:layout_height="70dp"
+                android:layout_marginLeft="120dp"
+                android:layout_marginTop="10dp"
+                app:srcCompat="@drawable/logo" />
+
+            <TextView
+                android:id="@+id/keepText"
+                android:layout_width="372dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="20dp"
+                android:layout_marginTop="10dp"
+                android:layout_marginEnd="20dp"
+                android:layout_marginBottom="20dp"
+                android:background="@drawable/shape_circle"
+                android:fontFamily="@font/mitr"
+                android:text="การปฐมพยาบาลเบื้องต้น"
+                android:textAlignment="center"
+                android:textAllCaps="true"
+                android:textColor="#fff"
+                android:textSize="30sp"
+                android:textStyle="bold"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintVertical_bias="0.052" />
+
+            <TextView
+                android:id="@+id/textView8"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/mitr"
+                android:paddingLeft="20dp"
+                android:paddingRight="20dp"
+                android:text="    หากรับประทานเห็ดพิษในขั้นแรกที่สำคัญที่สุดคือ ทำให้ผู้ป่วยอาเจียนเอาเศษอาหารที่ตกค้างออกมาให้มาก ต่อมาช่วยดูดพิษโดยวิธีใช้น้ำอุ่นผสมผงถ่าน activated charcoal ดื่ม ๒ แก้ว โดยแก้วแรกให้ล้วงคอให้อาเจียนออกมาก่อนแล้วจึงดื่มแก้วที่ ๒ แล้วล้วงคอให้อาเจียนอีกครั้ง หากออกยากให้ใช้เกลือแกง ๓ ช้อนชาผสมน้ำอุ่น จะทำให้อาเจียนได้ง่ายขึ้นแต่วิธีนี้ห้ามใช้กับเด็กที่มีอายุต่ำกว่า ๕ ขวบ ห้ามล้างท้องโดยการสวนทางทวารหนักโดยเด็ดขาด ต้องให้แพทย์เป็นผู้วินิจฉัยเท่านั้น เพราะจะเป็นอันตรายต่อผู้ป่วยหากร่างกายขาดน้ำ"
+                android:textAlignment="viewStart"
+                android:textAllCaps="false"
+                android:textSize="18sp" />
+
+            <TextView
+                android:id="@+id/textView2"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/mitr"
+                android:paddingLeft="20dp"
+                android:paddingRight="20dp"
+                android:text="     ข้อสำคัญ พยายามนำผู้ป่วยไปหาหมอหรือโรงพยาบาลให้เร็วที่สุด และถ้าเป็นไปได้ให้นำเห็ดที่รับประทานเข้าไป ให้แพทย์ด้วยจะเป็นการดีที่สุด เพื่อได้รับการรักษาอย่างทันท่วงทีและให้แพทย์นำเห็ดส่งตรวจทางห้องปฏิบัติการ "
+                android:textAlignment="viewStart"
+                android:textAllCaps="false"
+                android:textColor="#850909"
+                android:textSize="18sp" />
+
+            <ImageView
+                android:id="@+id/imageView3"
+                android:layout_width="300dp"
+                android:layout_height="250dp"
+                android:layout_marginLeft="40dp"
+                app:srcCompat="@drawable/firstaidd" />
+
+            <TextView
+                android:id="@+id/textView18"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp" />
+
+        </LinearLayout>
+    </ScrollView>
+
+</android.support.constraint.ConstraintLayout>

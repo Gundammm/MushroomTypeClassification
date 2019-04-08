@@ -5,6 +5,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ImageView;
 
 public class MainPageActivity extends AppCompatActivity {
 
@@ -17,7 +18,7 @@ public class MainPageActivity extends AppCompatActivity {
         library_button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(MainPageActivity.this,Main2Activity.class);
+                Intent intent = new Intent(MainPageActivity.this, LibraryMushroomActivity.class);
                 startActivity(intent);
             }
         });
@@ -30,6 +31,25 @@ public class MainPageActivity extends AppCompatActivity {
                 startActivity(intent);
             }
         });
+
+        Button keep_button = findViewById(R.id.keep_button);
+        keep_button.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent= new Intent(MainPageActivity.this,KeepMushroomActivity.class);
+                startActivity(intent);
+            }
+        });
+
+        Button firstAid_button = findViewById(R.id.firstaid_button);
+        firstAid_button.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent= new Intent(MainPageActivity.this,FirstAidActivity.class);
+                startActivity(intent);
+            }
+        });
+
 
     }
 }

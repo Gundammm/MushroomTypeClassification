@@ -4,6 +4,8 @@ import android.Manifest;
 import android.content.Context;
 import android.content.Intent;
 import android.content.pm.PackageManager;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.graphics.ImageFormat;
 import android.graphics.SurfaceTexture;
 import android.hardware.camera2.CameraAccessException;
@@ -33,6 +35,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.Toast;
 
+import java.io.ByteArrayOutputStream;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
@@ -45,6 +48,9 @@ import java.util.Arrays;
 import java.util.Date;
 import java.util.List;
 import java.util.Locale;
+
+import pl.aprilapps.easyphotopicker.DefaultCallback;
+import pl.aprilapps.easyphotopicker.EasyImage;
 
 public class CameraAPIActivity extends AppCompatActivity {
 
@@ -75,6 +81,15 @@ public class CameraAPIActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_camera_api);
+
+        Button Gallery = findViewById(R.id.chooseGallery);
+        Gallery.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                EasyImage.openGallery(CameraAPIActivity.this, 0);
+            }
+        });
+
         textureView = (TextureView) findViewById(R.id.texture);
         assert textureView != null;
         textureView.setSurfaceTextureListener(textureListener);
@@ -105,6 +120,43 @@ public class CameraAPIActivity extends AppCompatActivity {
         public void onSurfaceTextureUpdated(SurfaceTexture surface) {
         }
     };
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+
+        EasyImage.handleActivityResult(requestCode, resultCode, data, this, new DefaultCallback() {
+            @Override
+            public void onImagesPicked(@NonNull List<File> list, EasyImage.ImageSource imageSource, int i) {
+                File logoFile = list.get(0);
+
+                String path = logoFile.getAbsolutePath();
+                String Newpath = (Environment.getExternalStorageDirectory()+"/mushroomApp"+".jpg");
+
+                Bitmap photo = BitmapFactory.decodeFile(path);
+                photo = Bitmap.createScaledBitmap(photo,480,640,false);
+                ByteArrayOutputStream bytes = new ByteArrayOutputStream();
+                photo.compress(Bitmap.CompressFormat.JPEG, 70,bytes);
+
+                File f = new File(Newpath);
+                try {
+                    f.createNewFile();
+                    FileOutputStream fo = new FileOutputStream(f);
+                    fo.write(bytes.toByteArray());
+                    fo.close();
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+                Toast.makeText(CameraAPIActivity.this, "Saved:" + file, Toast.LENGTH_SHORT).show();
+                Intent intent = new Intent(CameraAPIActivity.this,UploadImageActivity.class);
+                intent.putExtra("ImageFrom","gallery");
+                startActivity(intent);
+
+                //   Bitmap bitmap = BitmapFactory.decodeFile(logoFile.getAbsolutePath(), null);
+            }
+        });
+    }
+
     private final CameraDevice.StateCallback stateCallback = new CameraDevice.StateCallback() {
         @Override
         public void onOpened(CameraDevice camera) {
@@ -218,6 +270,7 @@ public class CameraAPIActivity extends AppCompatActivity {
                     super.onCaptureCompleted(session, request, result);
                     Toast.makeText(CameraAPIActivity.this, "Saved:" + file, Toast.LENGTH_SHORT).show();
                     Intent intent = new Intent(CameraAPIActivity.this,UploadImageActivity.class);
+                    intent.putExtra("ImageFrom","camera");
                     startActivity(intent);
                     createCameraPreview();
                 }

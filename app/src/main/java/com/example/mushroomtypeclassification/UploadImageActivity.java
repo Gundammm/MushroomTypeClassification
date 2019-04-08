@@ -6,11 +6,11 @@ import android.graphics.BitmapFactory;
 import android.graphics.Matrix;
 import android.os.Bundle;
 import android.os.Environment;
+import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
-import android.widget.TextView;
 import android.widget.Toast;
 
 import com.koushikdutta.async.future.FutureCallback;
@@ -28,7 +28,6 @@ import java.util.Locale;
 
 
 public class UploadImageActivity extends AppCompatActivity {
-    String mCurrentPhotoPath;
 
 
     @Override
@@ -58,14 +57,20 @@ public class UploadImageActivity extends AppCompatActivity {
 
     }
 
+
     public void showImage(){
         OutputStream out = null;
-        SimpleDateFormat formatter = new SimpleDateFormat("dd_MM_yyyy_HH_mm", Locale.KOREA);
-        Date now = new Date();
         File file = new File(Environment.getExternalStorageDirectory()+"/mushroomApp"+".jpg");
         ImageView image = (ImageView)findViewById(R.id.picTest);
         Matrix matrix = new Matrix();
-        matrix.postRotate(90);
+        Intent intent = new Intent();
+        String ImageFrom = intent.getStringExtra("ImageFrom");
+        if(ImageFrom.equals("gallery")){
+            matrix.postRotate(360);
+        }
+        else if(ImageFrom.equals("camera")){
+            matrix.postRotate(90);
+        }
         Bitmap bm = BitmapFactory.decodeFile(Environment.getExternalStorageDirectory()+"/mushroomApp"+".jpg");
         Bitmap rotated = Bitmap.createBitmap(bm,0,0,bm.getWidth(),bm.getHeight(),matrix,true);
 
@@ -83,9 +88,8 @@ public class UploadImageActivity extends AppCompatActivity {
         SimpleDateFormat formatter = new SimpleDateFormat("dd_MM_yyyy_HH_mm", Locale.KOREA);
         Date now = new Date();
         String path = (Environment.getExternalStorageDirectory()+"/"+"mushroom_"+formatter.format(now)+".jpg");
-        Toast.makeText(getBaseContext(), path, Toast.LENGTH_LONG).show();
         Ion.with(this)
-                .load("http://0318a12c.ngrok.io/mushroom/UploadPicture.php")
+                .load("http://ebbbc033.ngrok.io/mushroom/UploadPicture.php")
                 .setMultipartFile("upload_file", new File(path))
                 .asString()
                 .setCallback(new FutureCallback<String>() {
@@ -105,7 +109,7 @@ public class UploadImageActivity extends AppCompatActivity {
         Bitmap photo = BitmapFactory.decodeFile(path);
         photo = Bitmap.createScaledBitmap(photo,480,640,false);
         ByteArrayOutputStream bytes = new ByteArrayOutputStream();
-        photo.compress(Bitmap.CompressFormat.JPEG, 50,bytes);
+        photo.compress(Bitmap.CompressFormat.JPEG, 70,bytes);
 
         File f = new File(Newpath);
         try {
@@ -122,15 +126,16 @@ public class UploadImageActivity extends AppCompatActivity {
     }
 
     public void RunToModel(){
+        Toast.makeText(getBaseContext(), "Loading to Classification", Toast.LENGTH_LONG).show();
         Ion.with(this)
-                .load("http://0318a12c.ngrok.io/mushroom/PHPRunClassify.php")
+                .load("http://ebbbc033.ngrok.io/mushroom/PHPRunClassify.php")
                 .asString()
                 .setCallback(new FutureCallback<String>() {
                     @Override
                     public void onCompleted(Exception e, String result) {
-                        //Toast.makeText(getBaseContext(), result, Toast.LENGTH_LONG).show();
-                        TextView txt = findViewById(R.id.textView7);
-                        txt.setText(result);
+                        Intent intent = new Intent(UploadImageActivity.this,ShowResultClassifyActivity.class);
+                        intent.putExtra("result",result);
+                        startActivity(intent);
                     }
                 });
     }
