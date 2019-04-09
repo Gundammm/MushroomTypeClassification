@@ -147,7 +147,7 @@ public class CameraAPIActivity extends AppCompatActivity {
                 } catch (IOException e) {
                     e.printStackTrace();
                 }
-                Toast.makeText(CameraAPIActivity.this, "Saved:" + file, Toast.LENGTH_SHORT).show();
+                //Toast.makeText(CameraAPIActivity.this, "Saved:" + file, Toast.LENGTH_SHORT).show();
                 Intent intent = new Intent(CameraAPIActivity.this,UploadImageActivity.class);
                 intent.putExtra("ImageFrom","gallery");
                 startActivity(intent);
@@ -179,7 +179,7 @@ public class CameraAPIActivity extends AppCompatActivity {
         @Override
         public void onCaptureCompleted(CameraCaptureSession session, CaptureRequest request, TotalCaptureResult result) {
             super.onCaptureCompleted(session, request, result);
-            Toast.makeText(CameraAPIActivity.this, "Saved:" + file, Toast.LENGTH_SHORT).show();
+           // Toast.makeText(CameraAPIActivity.this, "Saved:" + file, Toast.LENGTH_SHORT).show();
             createCameraPreview();
         }
     };
@@ -268,7 +268,7 @@ public class CameraAPIActivity extends AppCompatActivity {
                 @Override
                 public void onCaptureCompleted(CameraCaptureSession session, CaptureRequest request, TotalCaptureResult result) {
                     super.onCaptureCompleted(session, request, result);
-                    Toast.makeText(CameraAPIActivity.this, "Saved:" + file, Toast.LENGTH_SHORT).show();
+                    //Toast.makeText(CameraAPIActivity.this, "Saved:" + file, Toast.LENGTH_SHORT).show();
                     Intent intent = new Intent(CameraAPIActivity.this,UploadImageActivity.class);
                     intent.putExtra("ImageFrom","camera");
                     startActivity(intent);

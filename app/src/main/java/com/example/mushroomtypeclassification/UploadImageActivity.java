@@ -29,6 +29,8 @@ import java.util.Locale;
 
 public class UploadImageActivity extends AppCompatActivity {
 
+    public final String ngrokPath = "http://32bcdf6f.ngrok.io";
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -63,7 +65,7 @@ public class UploadImageActivity extends AppCompatActivity {
         File file = new File(Environment.getExternalStorageDirectory()+"/mushroomApp"+".jpg");
         ImageView image = (ImageView)findViewById(R.id.picTest);
         Matrix matrix = new Matrix();
-        Intent intent = new Intent();
+        Intent intent = getIntent();
         String ImageFrom = intent.getStringExtra("ImageFrom");
         if(ImageFrom.equals("gallery")){
             matrix.postRotate(360);
@@ -89,7 +91,7 @@ public class UploadImageActivity extends AppCompatActivity {
         Date now = new Date();
         String path = (Environment.getExternalStorageDirectory()+"/"+"mushroom_"+formatter.format(now)+".jpg");
         Ion.with(this)
-                .load("http://ebbbc033.ngrok.io/mushroom/UploadPicture.php")
+                .load(ngrokPath+"/mushroom/UploadPicture.php")
                 .setMultipartFile("upload_file", new File(path))
                 .asString()
                 .setCallback(new FutureCallback<String>() {
@@ -128,7 +130,7 @@ public class UploadImageActivity extends AppCompatActivity {
     public void RunToModel(){
         Toast.makeText(getBaseContext(), "Loading to Classification", Toast.LENGTH_LONG).show();
         Ion.with(this)
-                .load("http://ebbbc033.ngrok.io/mushroom/PHPRunClassify.php")
+                .load(ngrokPath+"/mushroom/PHPRunClassify.php")
                 .asString()
                 .setCallback(new FutureCallback<String>() {
                     @Override

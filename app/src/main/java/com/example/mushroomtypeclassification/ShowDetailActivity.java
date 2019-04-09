@@ -55,22 +55,22 @@ public class ShowDetailActivity extends AppCompatActivity {
 
 
         if(found_1==false){
-            detailText.setText(detail);
+            detailText.setText("     "+detail);
         }
         else{
-            detailText.setText(detail.substring(0,detail.indexOf("-1-")));
+            detailText.setText("     "+detail.substring(0,detail.indexOf("-1-")));
             if(found_2==true){
-                detailText_1.setText(detail.substring(detail.indexOf("-1-")+3, detail.indexOf("-2-")));
+                detailText_1.setText("     "+detail.substring(detail.indexOf("-1-")+4, detail.indexOf("-2-")));
                 if(found_3==true){
-                    detailText_2.setText(detail.substring(detail.indexOf("-2-")+3, detail.indexOf("-3-")));
-                    detailText_3.setText(detail.substring(detail.indexOf("-3-")+3));
+                    detailText_2.setText("     "+detail.substring(detail.indexOf("-2-")+4, detail.indexOf("-3-")));
+                    detailText_3.setText("     "+detail.substring(detail.indexOf("-3-")+4));
                 }
                 else {
-                    detailText_2.setText(detail.substring(detail.indexOf("-2-")+3));
+                    detailText_2.setText("     "+detail.substring(detail.indexOf("-2-")+4));
                 }
             }
             else {
-                detailText_1.setText(detail.substring(detail.indexOf("-1-")+3));
+                detailText_1.setText("     "+detail.substring(detail.indexOf("-1-")+4));
             }
         }
 

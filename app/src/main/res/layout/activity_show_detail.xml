@@ -92,7 +92,8 @@
             <TextView
                 android:id="@+id/textView4"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content" />
+                android:layout_height="wrap_content"
+                android:textStyle="bold" />
 
             <TextView
                 android:id="@+id/detail_textView"
@@ -103,6 +104,7 @@
                 android:paddingRight="25dp"
                 android:textColor="@android:color/black"
                 android:textSize="18sp"
+                android:textStyle="bold"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="@+id/thai_textView"
                 app:layout_constraintHorizontal_bias="0.0"
@@ -116,9 +118,11 @@
                 android:layout_height="wrap_content"
                 android:fontFamily="@font/pridi_extralight"
                 android:paddingLeft="25dp"
+                android:paddingTop="10dp"
                 android:paddingRight="25dp"
                 android:textColor="@android:color/black"
                 android:textSize="18sp"
+                android:textStyle="bold"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="@+id/thai_textView"
                 app:layout_constraintHorizontal_bias="0.0"
@@ -132,9 +136,11 @@
                 android:layout_height="wrap_content"
                 android:fontFamily="@font/pridi_extralight"
                 android:paddingLeft="25dp"
+                android:paddingTop="10dp"
                 android:paddingRight="25dp"
                 android:textColor="@android:color/black"
                 android:textSize="18sp"
+                android:textStyle="bold"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="@+id/thai_textView"
                 app:layout_constraintHorizontal_bias="0.0"
@@ -148,9 +154,11 @@
                 android:layout_height="wrap_content"
                 android:fontFamily="@font/pridi_extralight"
                 android:paddingLeft="25dp"
+                android:paddingTop="10dp"
                 android:paddingRight="25dp"
                 android:textColor="@android:color/black"
                 android:textSize="18sp"
+                android:textStyle="bold"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="@+id/thai_textView"
                 app:layout_constraintHorizontal_bias="0.0"
