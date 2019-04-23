@@ -51,6 +51,22 @@ public class LibraryMushroomActivity extends AppCompatActivity{
             }
         });
 
+        Button eatButton = findViewById(R.id.Eatbutton);
+        eatButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                loadMushroomData2("eat");
+            }
+        });
+
+        Button poiButton = findViewById(R.id.Poisonbutton);
+        poiButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                loadMushroomData2("poisonous");
+            }
+        });
+
     }
 
     @Override
@@ -83,6 +99,26 @@ public class LibraryMushroomActivity extends AppCompatActivity{
             sciencename.add(science);
         }
         c.close();
+    }
+
+    private void loadMushroomData2(String typeMushroom){
+        Cursor c = mDb.query(MUSHROOM_TABLE, null, null, null, null, null, null);
+        mMushroomItemList = new ArrayList<>();
+        while (c.moveToNext()) {
+            long id = c.getLong(c.getColumnIndex(COL_ID));
+            String thai = c.getString(c.getColumnIndex(COL_THAI));
+            String science = c.getString(c.getColumnIndex(COL_SCIENCE));
+            String image = c.getString(c.getColumnIndex(COL_IMAGE));
+            String type = c.getString(c.getColumnIndex(COL_TYPE));
+            String detail = c.getString(c.getColumnIndex(COL_DETAIL));
+
+            if(type.equals(typeMushroom)){
+                MushroomItem item = new MushroomItem(id, thai, science,  image, type, detail);
+                mMushroomItemList.add(item);
+            }
+        }
+        c.close();
+        setupListView();
     }
 
     private void setupListView(){

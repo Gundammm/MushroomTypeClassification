@@ -6,6 +6,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
+import android.widget.TextView;
 
 public class MainPageActivity extends AppCompatActivity {
 
@@ -23,7 +24,7 @@ public class MainPageActivity extends AppCompatActivity {
             }
         });
 
-        Button classify_button = findViewById(R.id.classify_button);
+        ImageView classify_button = findViewById(R.id.classify_button);
         classify_button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -49,6 +50,24 @@ public class MainPageActivity extends AppCompatActivity {
                 startActivity(intent);
             }
         });
+
+        Button path = findViewById(R.id.ngrokButton);
+        path.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(MainPageActivity.this,EditNgrokPathActivity.class);
+                startActivity(intent);
+            }
+        });
+//
+//        Button show = findViewById(R.id.showButton);
+//        show.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                Intent intent = new Intent(MainPageActivity.this,NgrokActivity.class);
+//                startActivity(intent);
+//            }
+//        });
 
 
     }

@@ -14,9 +14,13 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".FirstAidActivity"
-            android:theme="@style/AppTheme.FullScreen" ></activity>
-        <activity android:name=".KeepMushroomActivity"
+        <activity android:name=".EditNgrokPathActivity"
+            android:theme="@style/AppTheme.FullScreen"></activity>
+        <activity
+            android:name=".FirstAidActivity"
+            android:theme="@style/AppTheme.FullScreen" />
+        <activity
+            android:name=".KeepMushroomActivity"
             android:theme="@style/AppTheme.FullScreen" />
         <activity
             android:name=".ShowResultClassifyActivity"

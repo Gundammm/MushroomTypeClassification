@@ -29,13 +29,14 @@ import java.util.Locale;
 
 public class UploadImageActivity extends AppCompatActivity {
 
-    public final String ngrokPath = "http://32bcdf6f.ngrok.io";
-
+    private DatabaseHelper db;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_upload_image);
+
+        db = new DatabaseHelper(this);
 
         showImage();
 
@@ -58,7 +59,6 @@ public class UploadImageActivity extends AppCompatActivity {
         });
 
     }
-
 
     public void showImage(){
         OutputStream out = null;
@@ -86,12 +86,13 @@ public class UploadImageActivity extends AppCompatActivity {
     }
 
     public void uploadToHtdoc(){
-        Toast.makeText(getBaseContext(), "อัพโหลดรูป", Toast.LENGTH_LONG).show();
+        String url = "http://"+db.getNgrokPath()+".ngrok.io";
+        Toast.makeText(getBaseContext(), "อัปโหลดรูป", Toast.LENGTH_LONG).show();
         SimpleDateFormat formatter = new SimpleDateFormat("dd_MM_yyyy_HH_mm", Locale.KOREA);
         Date now = new Date();
         String path = (Environment.getExternalStorageDirectory()+"/"+"mushroom_"+formatter.format(now)+".jpg");
         Ion.with(this)
-                .load(ngrokPath+"/mushroom/UploadPicture.php")
+                .load(url+"/mushroom/UploadPicture.php")
                 .setMultipartFile("upload_file", new File(path))
                 .asString()
                 .setCallback(new FutureCallback<String>() {
@@ -128,9 +129,10 @@ public class UploadImageActivity extends AppCompatActivity {
     }
 
     public void RunToModel(){
-        Toast.makeText(getBaseContext(), "Loading to Classification", Toast.LENGTH_LONG).show();
+        String url = "http://"+db.getNgrokPath()+".ngrok.io";
+        Toast.makeText(getBaseContext(), "กำลังประมวลผล", Toast.LENGTH_LONG).show();
         Ion.with(this)
-                .load(ngrokPath+"/mushroom/PHPRunClassify.php")
+                .load(url+"/mushroom/PHPRunClassify.php")
                 .asString()
                 .setCallback(new FutureCallback<String>() {
                     @Override

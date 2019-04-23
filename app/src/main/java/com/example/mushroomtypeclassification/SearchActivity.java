@@ -10,6 +10,7 @@ import android.widget.AdapterView;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.ListView;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import java.util.ArrayList;
@@ -27,6 +28,7 @@ public class SearchActivity extends AppCompatActivity{
 
     private EditText QuerySearch;
     private ImageView ClickImage;
+    private TextView CountSearch;
 
     private DatabaseHelper mHelper;
     private SQLiteDatabase mDb;
@@ -51,8 +53,9 @@ public class SearchActivity extends AppCompatActivity{
         thainame = intent.getStringArrayListExtra("thai");
         sciencename = intent.getStringArrayListExtra("science");
 
-        QuerySearch = (EditText) findViewById(R.id.query_editText);
+        QuerySearch = (EditText) findViewById(R.id.path_editText);
         ClickImage = (ImageView) findViewById(R.id.clickImage);
+        CountSearch = (TextView) findViewById(R.id.countText);
 
 
         ClickImage.setOnClickListener(new View.OnClickListener() {
@@ -62,6 +65,8 @@ public class SearchActivity extends AppCompatActivity{
                 SearchQuery(queryText);
             }
         });
+
+
 
     }
 
@@ -80,25 +85,25 @@ public class SearchActivity extends AppCompatActivity{
             int intText = (int) text;
             //eng
             if (intText <= 122) {
-//                String newQuery = queryText.toLowerCase();
-//                for (int i = 0; i < sciencename.size(); i++) {
-//                    String txtScience = sciencename.get(i);
-//                    String newtxtScience = txtScience.toLowerCase();
-//                    Boolean found = newtxtScience.contains(newQuery);
-//                    if (found == true){
-//                        result += sciencename.get(i) + "\n";
-//                        countFound++;
-//                        resultSearch.add(txtScience);}
-//                }
-
+                String newQuery = queryText.toLowerCase();
                 for (int i = 0; i < sciencename.size(); i++) {
                     String txtScience = sciencename.get(i);
-                    Boolean found = txtScience.contains(queryText);
+                    String newtxtScience = txtScience.toLowerCase();
+                    Boolean found = newtxtScience.contains(newQuery);
                     if (found == true){
                         result += sciencename.get(i) + "\n";
                         countFound++;
                         resultSearch.add(txtScience);}
                 }
+
+//                for (int i = 0; i < sciencename.size(); i++) {
+//                    String txtScience = sciencename.get(i);
+//                    Boolean found = txtScience.contains(queryText);
+//                    if (found == true){
+//                        result += sciencename.get(i) + "\n";
+//                        countFound++;
+//                        resultSearch.add(txtScience);}
+//                }
             }
             //thai
             else {
@@ -113,8 +118,10 @@ public class SearchActivity extends AppCompatActivity{
                 }
             }
         }
-        if(countFound==0){ result+="ไม่พบข้อมูล"; Toast.makeText(SearchActivity.this,result,Toast.LENGTH_SHORT).show();}
+        String count = Integer.toString(countFound);
+        if(countFound==0){ result+="ไม่พบข้อมูล"; CountSearch.setText("พบข้อมูลทั้งหมด "+count+" ข้อมูล"); Toast.makeText(SearchActivity.this,result,Toast.LENGTH_SHORT).show();}
         else if(countFound>0){
+            CountSearch.setText("พบข้อมูลทั้งหมด "+count+" ข้อมูล");
             loadMushroomData(resultSearch);
         }
     }
@@ -167,6 +174,7 @@ public class SearchActivity extends AppCompatActivity{
                 intent.putExtra("id",mushItem._id);
                 intent.putExtra("image",mushItem.image);
                 intent.putExtra("detail",mushItem.detail);
+                intent.putExtra("type",mushItem.type);
                 startActivity(intent);
             }
         });

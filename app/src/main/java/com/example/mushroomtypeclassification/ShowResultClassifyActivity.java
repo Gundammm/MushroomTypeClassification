@@ -12,6 +12,7 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import java.io.IOException;
 import java.io.InputStream;
@@ -68,7 +69,7 @@ public class ShowResultClassifyActivity extends AppCompatActivity {
         int checkUnderScore = Result.indexOf("_");
         String nameMushroom = "";
         if(checkUnderScore!=-1){
-            nameMushroom = Result.substring(0,checkUnderScore);
+            nameMushroom = Result.substring(0,checkUnderScore+1);
         }
         else{ nameMushroom = Result; }
 

@@ -26,7 +26,7 @@
         app:layout_constraintVertical_bias="0.0" />
 
     <EditText
-        android:id="@+id/query_editText"
+        android:id="@+id/path_editText"
         android:layout_width="230dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
@@ -57,23 +57,41 @@
         android:layout_marginStart="8dp"
         android:contentDescription="TODO"
         android:paddingEnd="30dp"
-        app:layout_constraintBottom_toBottomOf="@+id/query_editText"
+        app:layout_constraintBottom_toBottomOf="@+id/path_editText"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/query_editText"
-        app:layout_constraintTop_toTopOf="@+id/query_editText"
+        app:layout_constraintStart_toEndOf="@+id/path_editText"
+        app:layout_constraintTop_toTopOf="@+id/path_editText"
         app:layout_constraintVertical_bias="0.0"
         app:srcCompat="@drawable/search" />
+
+    <TextView
+        android:id="@+id/countText"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="8dp"
+        android:fontFamily="@font/mitr"
+        android:paddingTop="10dp"
+        android:textAlignment="center"
+        android:textColor="#535353"
+        android:textSize="15sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/clickImage"
+        app:layout_constraintVertical_bias="0.009" />
 
     <ListView
         android:id="@+id/result_search"
         android:layout_width="match_parent"
-        android:layout_height="568dp"
-        android:layout_marginTop="32dp"
+        android:layout_height="579dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/query_editText" />
+        app:layout_constraintTop_toBottomOf="@+id/countText"
+        app:layout_constraintVertical_bias="1.0" />
 
 
 </android.support.constraint.ConstraintLayout>

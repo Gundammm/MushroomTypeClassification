@@ -41,6 +41,8 @@
         android:layout_marginTop="19dp"
         android:layout_marginEnd="291dp"
         android:layout_marginBottom="20dp"
-        android:text="คลังรูป" />
+        android:background="@drawable/search_layout"
+        android:text="คลังรูป"
+        android:textColor="#fff" />
 
 </RelativeLayout>

@@ -9,10 +9,11 @@ import android.support.annotation.Nullable;
 
 public class DatabaseHelper extends SQLiteOpenHelper {
 
-    private static final String DATABASE_NAME = "mushroomclassify.db";
+    private static final String DATABASE_NAME = "mushroomclassify1.db";
     private static final int DATABASE_VERSION = 1;
 
     public static final String MUSHROOM_TABLE = "mushroom_table";
+    public static final String NGROK_TABLE = "ngrok_table";
 
     public static final String COL_ID = "_id";
     public static final String COL_THAI = "thai";
@@ -20,6 +21,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     public static final String COL_IMAGE = "image";
     public static final String COL_TYPE = "type";
     public static final String COL_DETAIL = "detail";
+    public static final String COL_PATH = "path";
 
     private static final String SQL_CREATE_TABLE_MUSHROOM
             = "CREATE TABLE " + MUSHROOM_TABLE + "("
@@ -31,12 +33,24 @@ public class DatabaseHelper extends SQLiteOpenHelper {
             + COL_DETAIL + " TEXT"
             + ")";
 
+    private String SQL_CREATE_TABLE_NGROK = "CREATE TABLE " + NGROK_TABLE + "("
+            + COL_ID + " INTEGER PRIMARY KEY AUTOINCREMENT," + COL_PATH + " TEXT" + ")";
+
+    private String DROP_NGROK_TABLE = "DROP TABLE IF EXISTS " + NGROK_TABLE;
+
+
+
     public DatabaseHelper(@Nullable Context context) {
         super(context, DATABASE_NAME, null, DATABASE_VERSION);
     }
 
     @Override
     public void onCreate(SQLiteDatabase db) {
+
+        db.execSQL(SQL_CREATE_TABLE_NGROK);
+        ContentValues path = new ContentValues();
+        path.put(COL_PATH, "กดค้างเพื่อใส่ PATH");
+        db.insert(MUSHROOM_TABLE, null, path);
 
         db.execSQL(SQL_CREATE_TABLE_MUSHROOM);
         ContentValues mr = new ContentValues();
@@ -99,6 +113,14 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         db.insert(MUSHROOM_TABLE, null, mr);
 
         mr = new ContentValues();
+        mr.put(COL_THAI, "เห็ดไข่เน่า");
+        mr.put(COL_SCIENCE, "Clarkeinda trachodes");
+        mr.put(COL_IMAGE, "ClarkeindaTrachodes.jpg");
+        mr.put(COL_TYPE, "poisonous");
+        mr.put(COL_DETAIL,"เห็ดไข่เน่ามีหมวกรูปกระทะค่ำสีขาว เส้นผ่าศูนย์กลาง 7 – 15 เซนติเมตร มีเกล็ดสีน้ำตาลอ่อน ซึ่งปลายรวมเป็นกระจุกและงอนขึ้น ยกเว้นกลางหมวกที่มีสีน้ำตาล เกล็ดกระจายไปยังขอบหมวก ครีบสีขาวเปลี่ยนเป็นสีเขียวอ่อนอมน้ำตาลไม่ยึดติดก้าน ก้านรูปทรงกระบอก สีขาว ผิวเรียบ ยาว 9 – 12 เซนติเมตร เส้นผ่าศูนย์กลาง 0.5 – 2 เซนติเมตร บนก้านตอนบนมีวงแหวนสีขาว  เนื้อในสีขาว เมื่อฉีกขาดหรือช้ำเปลี่ยนเป็นสีแดง หรือน้ำตาลแดง -1- เห็ดไข่เน่ามีสารพิษ Gastrointestinal ซึ่งทำให้เกิดอาการกับระบบทางเดินอาหารมีอาการ คลื่นไส้ อาเจียน และท้องร่วง ");
+        db.insert(MUSHROOM_TABLE, null, mr);
+
+        mr = new ContentValues();
         mr.put(COL_THAI, "เห็ดไข่หงส์");
         mr.put(COL_SCIENCE, "Scleroderma citrinum");
         mr.put(COL_IMAGE, "SclerodermaCitrinum.jpg");
@@ -124,8 +146,8 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 
         mr = new ContentValues();
         mr.put(COL_THAI, "เห็ดจาวมะพร้าว");
-        mr.put(COL_SCIENCE, "Calvatia craniformis");
-        mr.put(COL_IMAGE, "CalvatiaCraniformis.jpg");
+        mr.put(COL_SCIENCE, "Calvatia craniiformis");
+        mr.put(COL_IMAGE, "CalvatiaCraniiformis.jpg");
         mr.put(COL_TYPE, "eat");
         mr.put(COL_DETAIL,"เห็ดจาวมะพร้าว เป็นเห็ดขนาดใหญ่ ดอกอ่อนของเห็ดจาวมะพร้าวมีลักษณะเป็นก้อนกลมสีขาว ซึ่งขยายโตขึ้นเรื่อย ๆ ตรงโคนเป็นเหมือนก้านดอก ขนาดของดอกประมาณ 5 – 12 เซนติเมตร และสูงประมาณ 4 – 10 เซนติเมตร ผิวด้านบนของดอกเห็ดอ่อนเรียบ เมื่อโตขึ้นจะค่อย ๆ เปลี่ยนเป็นผิวนูนขรุขระคล้ายผิวสมองคน และสีจะเปลี่ยนไปเป็นสีน้ำตาลอมชมพูจนเป็นสีน้ำตาลอ่อน ระยะนี้ถ้าผ่าเนื้อเห็ดจะพบว่า ดอกเห็ดมีเนื้อภายในแบ่งออกเป็น 2 ส่วน ครึ่งหนึ่งของดอกส่วนบนมีเนื้อละเอียดกว่าตอนล่าง ในระยะแรกจะมีสีขาวต่อไปจะเปลี่ยนเป็นสีเขียวหม่นอมเหลือง แล้วเปลี่ยนเป็นสีน้ำตาลอมเขียวหม่น เมื่อดอกเห็ดแก่เต็มที่เนื้อเยื่ออีกครึ่งหนึ่งที่อยู่ตอนล่าง มีลักษณะคล้ายฟองน้ำ ซึ่งหยาบกว่าส่วนบนมีสีขาวเช่นกัน ทำหน้าที่เป็นฐานของดอกเห็ดหรือก้านดอกเห็ด เมื่อเวลาดอกเห็ดแก่แล้วจะเปลี่ยนเป็นสีน้ำตาลอ่อน แตกต่างจากส่วนบน ระยะที่มีลักษณะเหี่ยวย่นคล้ายสมองคนนี้ ถ้าเอามือกดด้านบนของเห็ดจะรู้สึกอ่อนนุ่มและยืดหยุ่นกว่าระยะเป็นก้อนกลม ดอกเห็ดเมื่อแก่เต็มที่ผิวด้านบนจะแตกออก สปอร์ที่อยู่ภายในจะฟุ้งกระจายออก มาคล้ายฝุ่นสีน้ำตาลอมเขียว -1- เห็ดจาวมะพร้าวจะขึ้นตามสนามหญ้า ทุ่งนา ที่เป็นดินทรายมีอินทรีย์วัตถุบ้างเล็กน้อย น้ำไม่ท่วมขังและหน้าดินไม่เคยถูกไถมาก่อน และออกดอกชุกชุมในฤดูฝน ช่วงเดือนพฤษภาคม – กรกฎาคม ของทุกปีหลังจากมีฝนตกและอากาศร้อนอบอ้าว -2- เห็ดจาวมะพร้าวเป็นเห็ดที่บริโภคได้รสชาติดี เนื้ออ่อนนุ่มชาวบ้าน นิยมบริโภคตามธรรมชาติเห็ดตาปุ๊ช่วยย่อยอินทรีย์วัตถุเพิ่มความอุดมสมบูรณ์ของดิน");
         db.insert(MUSHROOM_TABLE, null, mr);
@@ -210,12 +232,9 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         mr.put(COL_DETAIL,"มีรูปร่างเหมือนหรือคล้ายกับหอยนางรม มีดอกเห็ดเป็นสีเหลืองทองอร่ามดูสีสันสวยงามน่ารับประทาน โดยบริเวณหมวกดอกของเห็ดนางรมทองนั้นจะมีผิวเรียบ ส่วนตรงกลางจะเว้าเป็นแอ่ง ซึ่งขอบหมวกจะเอียงลงเล็กน้อย และใต้หมวกจะเป็นครีบเมื่อดอกเห็ดบานเต็มที่แล้ว ส่วนบริเวณก้านดอกนั้นจะติดกับหมวกดอกเห็ดเป็นเนื้อเดียวกัน โดยดอกเห็ดนี้อาจขึ้นเป็นดอกเดี่ยวๆ เลย หรือจะขึ้นเป็นกระจุกกันอยู่ก็ได้ ซึ่งดอกเห็ดนี้จะมีลักษณะดูบอบบาง และหมวกเห็ดนี้จะขึ้นซ้อนกันอยู่เป็นชั้นๆ เป็นเห็ดที่เจริญเติบโตได้ดีในอากาศเย็น จึงมักมีการทำการเพาะปลูกในช่วงฤดูฝนและฤดูหนาว -1- เห็ดนางรมทองมีกรดโฟลิกอยู่สูงช่วยรักษาและป้องกันโรคธาลัสซีเมีย (โลหิตจาง) ช่วยขับไขมันไม่ดีออก ทำให้ไม่ไปอุดตันตามเส้นเลือด ช่วยแก้และป้องกันโรคเบาหวาน ช่วยลดและป้องกันโรคความดันโลหิตสูง และมีไขมันต่ำและปริมาณโซเดียมน้อยเหมาะกับคนที่กำลังลดน้ำหนัก อีกทั้งป้องกันโรคหัวใจ ช่วยบำรุงการทำงานของระบบหัวใจให้เป็นปกติ ป้องกันโรคไตอักเสบ ช่วยให้ไตสามารถทำงานได้เป็นปกติ และช่วยบำรุงร่างกายให้แข็งแรง ไม่เจ็บป่วยง่าย");
         db.insert(MUSHROOM_TABLE, null, mr);
 
-        //////////////////////////////////////////////////////////////////
-        //////////////////////////////////////////////////////////////////
-        //////////////////////////////////////////////////////////////////
         mr = new ContentValues();
         mr.put(COL_THAI, "เห็ดน้ำหมึก");
-        mr.put(COL_SCIENCE, "Coprinus cinerea");
+        mr.put(COL_SCIENCE, "Coprinopsis cinerea");
         mr.put(COL_IMAGE, "CoprinopsisCinerea.JPG");
         mr.put(COL_TYPE, "eat");
         mr.put(COL_DETAIL,"หมวกเห็ดรูประฆังหรือรูปกรวยคว่ำ สีเทา กลางหมวกสีน้ำตาลอ่อน มีขนและเกล็ดสีเทาหรือสีน้ำตาลอ่อนหลุดง่าย ขอบเป็นริ้วและม้วนงอขึ้นเมื่อดอกแก่ ครีบสีน้ำตาลดำ แคบเรียงชิดติดกัน ไม่ยึดติดกับก้าน ต่อมาเปลี่ยนเป็นสีดำแล้วสลายเป็นหยดน้ำสีดำ ก้านยาวประมาณ 3-12 เซนติเมตร รูปทรงกระบอก สีขาว โคนก้านโปร่งเล็กน้อยและมีรากยาว ตรงกลางก้านกลวง ผิวมีขนบางๆ");
@@ -231,8 +250,8 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 
         mr = new ContentValues();
         mr.put(COL_THAI, "เห็ดปอดดำ");
-        mr.put(COL_SCIENCE, "Strobilomyces floccopus");
-        mr.put(COL_IMAGE, "StrobilomycesFloccopus.jpg");
+        mr.put(COL_SCIENCE, "Strobilomyces strobilomyces");
+        mr.put(COL_IMAGE, "StrobilomycesStrobilomyces.jpg");
         mr.put(COL_TYPE, "eat");
         mr.put(COL_DETAIL,"หมวกเห็ดรูปกระทะคว่ำ ดอกที่บานไม่เต็มที่ผิวหมวกคล้ายผลน้อยหน่า หมวกมีสีเทาแล้วเปลี่ยนเป็นสีดำ มีขนรวมกันเป็นกลุ่มสี่เหลี่ยมคล้ายเกล็ดสีเทาดำแนบติดกับหมวก เกล็ดที่อยู่กลางหมวกงอขึ้นเล็กน้อย ขอบหมวกมีเศษของวงแหวนที่ขาดจากก้านห้อยติดอยู่โดยรอบ ก้านมีสีเดียวกับหมวก ยาว 6-8 เซนติเมตร มีวงแหวนเป็นชิ้นเล็ก ๆ ตัดแล้วเปลี่ยนเป็นสีแดงแล้วเปลี่ยนเป็นน้ำตาลดำ");
         db.insert(MUSHROOM_TABLE, null, mr);
@@ -294,6 +313,15 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         db.insert(MUSHROOM_TABLE, null, mr);
 
         mr = new ContentValues();
+        mr.put(COL_THAI, "เห็ดฟาง");
+        mr.put(COL_SCIENCE, "Volvariella volvacea");
+        mr.put(COL_IMAGE, "VolvariellaVolvacea.jpg");
+        mr.put(COL_TYPE, "eat");
+        mr.put(COL_DETAIL,"ดอกเห็ดอ่อนมีลญักษณะเป็นรูปไข่ เมื่อเจริญเติบโตขึ้นจะปริแตกเหลือเพียงเยื่อหุ้มรูปถ้วยที่โคน ผิวด้านนอกส่วนมากจะเปลี่ยนเป็นสีขาวหม่น  หมวกเห็ดรูปไข่นั้นเมื่อบานเต็มที่จะมีเส้นผ่านศุนย์กลาง 4-10 เซนติเมตร กลางหมวกมีขนละเอียดสีดำ หรือ สีน้ำตาลแดง ครีบสีขาวเปลี่ยนเป็นสีชมพูอ่อน ไม่ติดกับก้าน ก้านยาว   4-10 เซนติเมตร เส้นผ่าศูนย์กลางที่ 0.5-1เซนติเมตร  ผิวสีขาวนวลมีขนสีขาว  ครีบ เป้นแผ่นเล็กเล็กๆ วางเรียงเป้นรัศมีรอบก้านดอก เมื่อดอกเจริญเติบโตเต็มที่จะมีครีบประมาณ300-400 แต่ละครีบห่างประมาณ 1 มิลลิเมตร เมื่อดอกมีการปริแล้วนั้นสีครีบจะเปลี่ยนเป็นสีน้ำตาลอ่อนและเข้มในที่สุด -1- ไม่ควรรับประทานเห็ดฟางสด ๆ เนื่องจากเห็ดฟางมีสารที่ยับยั้งการดูดซึมอาหาร และเห็ดฟางมีสรรพคุณที่วยป้องกันการเจริญเติบโตของไวรัส ช่วยลดไขมันในเส้นเลือด ช่วยป้องกันไขมันอุดตันในเส้นเลือด ช่วยให้ระบบการทำงานของตับและร่างกายเกิดความสมดุล และช่วยบำรุงตับให้แข็งแรง -2- นอกจากนี้เห็ดฟางยังมีคุณค่าทางโภชนาการค่อนข้างสูง โดยเฉพาะโปรตีน  เกลือแร่  วิตามิน ที่สำคัญเห็ดฟางมีไขมันน้อย  จึงเหมาะสำหรับผู้ที่มีปัญหาเกี่ยวกับไขมันในเลือดสูง  และโรคหัวใจ");
+        db.insert(MUSHROOM_TABLE, null, mr);
+
+
+        mr = new ContentValues();
         mr.put(COL_THAI, "เห็ดฟานน้ำตาลแดง");
         mr.put(COL_SCIENCE, "Lactarius volemus");
         mr.put(COL_IMAGE, "LactariusVolemus.jpg");
@@ -311,8 +339,8 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 
         mr = new ContentValues();
         mr.put(COL_THAI, "เห็ดมิลค์กี้");
-        mr.put(COL_SCIENCE, "Calocybe Indica");
-        mr.put(COL_IMAGE, "CalocybeIndica.jpg");
+        mr.put(COL_SCIENCE, "Calocybe lndica");
+        mr.put(COL_IMAGE, "CalocybeLndica.jpg");
         mr.put(COL_TYPE, "eat");
         mr.put(COL_DETAIL,"ลักษณะของเห็ดมิลค์กี้ คือ ดอกจะเป็นสีขาวนวล เหมือนน้ำนม ดอกมีขนาดใหญ่สุดมากถึง 7 ขีด เป็นเห็ดที่ชอบอากาศร้อนชื้น ที่อุณหภูมิ 36 องศาเซลเซียล เป็นเห็ดที่ได้รับความนิยมในกลุ่มผู้บริโภค เนื่องจาก รสชาติของดอกเหมือนเนื้อไก่ ส่วนก้านดอกเหมือนปลาหมึก และเมื่อนำมาทำอาหาร รสชาติของเห็ดจะคงสภาพเดิม แม้ทำทิ้งไว้นานถึง 3 วัน หรืออุ่นหลายรอบ เห็ดยังคงสภาพเหมือนตอนปรุงเสร็จใหม่ๆ");
         db.insert(MUSHROOM_TABLE, null, mr);
@@ -375,16 +403,16 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 
         mr = new ContentValues();
         mr.put(COL_THAI, "เห็ดรูประฆัง");
-        mr.put(COL_SCIENCE, "Coprinus atramentarius");
-        mr.put(COL_IMAGE, "CoprinusAtramentarius.jpg");
+        mr.put(COL_SCIENCE, "Coprinus atramentaris");
+        mr.put(COL_IMAGE, "CoprinusAtramentaris.jpg");
         mr.put(COL_TYPE, "poisonous");
         mr.put(COL_DETAIL,"หมวกเห็ดมีเนื้อหนากว่าเห็ดถั่วชนิดอื่น ขอบหมวกสีเทาดำเมื่อเริ่มมีดอกแก่และมักจะฉีกขาดเป็นแห่งๆ ครีบมีสีขาวและเปลี่ยนเป็นสีดำและย่อยตัวเองเป็นของเหลวสีดำ ครีบไม่ติดก้าน ก้านรูปทรงกระบอก ยาว 5-11 เซนติเมตร เส้นผ่าศูนย์กลาง 3-4 มิลลิเมตร สีขาวนวลหรือสีน้ำตาลอ่อน เส้นผ่าศูนย์กลาง 2-4 เซนติเมตร -1- ชอบขึ้นบนอินทรียวัตถุ เช่น กองเปลือกถั่วเหลืองเกิดดอกเป็นกลุ่มใหญ่เพื่อความปลอดภัยห้ามดื่มเครื่องคื่มที่มีแอลกอฮอลล์ หลังรับประทานเห็ด เพราะสารพิษทำให้มึนเมาจนหมดสติได้ แต่จะหายใจเป็นปกติภายใน 3-4 ชั่วโมง");
         db.insert(MUSHROOM_TABLE, null, mr);
 
         mr = new ContentValues();
         mr.put(COL_THAI, "เห็ดลม");
-        mr.put(COL_SCIENCE, "Lentinus polychrous");
-        mr.put(COL_IMAGE, "LentinusPolychrous.jpg");
+        mr.put(COL_SCIENCE, "Lentinus polychrousLev");
+        mr.put(COL_IMAGE, "LentinusPolychrousLev.jpg");
         mr.put(COL_TYPE, "eat");
         mr.put(COL_DETAIL,"หมวกเห็ดรูปกรวยลึก สีขาวนวลหรือน้ำตาลอ่อนอมเทา ผิวเหนียวคล้ายหนัง ขอบงอลงเล็กน้อย ผิวมีขนสั้น ๆ สีน้ำตาลซึ่งรวมกันคล้ายเกล็ดเล็ก ๆ และปลายงอนขึ้นเล็กน้อย เกล็ดเรียงกระจายออกไปยังขอบหมวก ดอกอ่อนมีขอบบางและม้วนงอลง ครีบสีน้ำตาลอ่อนอมเทา บางและแคบ เมื่อแห้งจะเหนียวแข็งและเปลี่ยนเป็นสีน้ำตาลแดง หรือน้ำตาลอมม่วง ครีบมีความยาวต่างกัน ด้านในยาวขนานเล็กลงไปติดก้าน ด้านนอกเรียวแคบไปติดขอบหมวก ขอบครีบจักฟันเลื่อยเล็ก ๆ มองไม่เห็นด้วยตาเปล่า เวลาลูบจะสากมือ ก้านแข็งเหนียว สีขาวนวลแล้วเปลี่ยนเข้มขึ้นจนเป็นสีน้ำตาลดำ -1- คุณค่าทางโภชนาการของเห็ดลม คือ ช่วยบำรุงร่างกายให้แข็งแรง และสร้างเสริมภูมิคุ้มกันในร่างกายให้ทำงานอย่างมีประสิทธิภาพ ใช้เป็นยาบำรุงกำลัง ให้มีเรี่ยวแรงและพละกำลังได้เป็นอย่างดี ช่วยแก้อาการไข้ ทำให้ร่างกายกระปรี้กระเปร่า ไม่อ่อนเพลีย ช่วยป้องกันโรคเสื่อมสมรรถภาพทางเพศ อีกทั้งช่วยลดระดับน้ำตาลในเลือด ป้องกันอันตรายจากโรคเบาหวาน ช่วยยืดอายุของผู้ป่วยที่ติดเชื้อเอดส์ หรือ HIV ได้และ ช่วยปรับความสมดุลภายในร่างกายให้ทำงานได้ประสานกันอย่างมีประสิทธิภาพ");
         db.insert(MUSHROOM_TABLE, null, mr);
@@ -514,9 +542,28 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 
     }
 
+    public void AddNgrokPath(String ng){
+        SQLiteDatabase db = this.getWritableDatabase();
+        ContentValues path = new ContentValues();
+        path.put(COL_PATH, ng);
+        db.insert(NGROK_TABLE, null, path);
+        db.close();
+    }
+
+    public String getNgrokPath(){
+        SQLiteDatabase db = this.getWritableDatabase();
+
+        Cursor cursor = db.rawQuery("SELECT " + COL_PATH
+                + " FROM " + NGROK_TABLE  , null);
+        cursor.moveToLast();
+        String cr = cursor.getString(cursor.getColumnIndex(COL_PATH));
+        return cr;
+    }
+
 
     @Override
     public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
+        db.execSQL(DROP_NGROK_TABLE);
 
     }
 

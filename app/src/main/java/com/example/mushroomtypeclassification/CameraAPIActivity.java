@@ -134,7 +134,7 @@ public class CameraAPIActivity extends AppCompatActivity {
                 String Newpath = (Environment.getExternalStorageDirectory()+"/mushroomApp"+".jpg");
 
                 Bitmap photo = BitmapFactory.decodeFile(path);
-                photo = Bitmap.createScaledBitmap(photo,480,640,false);
+                photo = Bitmap.createScaledBitmap(photo,photo.getWidth(),photo.getHeight(),false);
                 ByteArrayOutputStream bytes = new ByteArrayOutputStream();
                 photo.compress(Bitmap.CompressFormat.JPEG, 70,bytes);
 
@@ -147,7 +147,6 @@ public class CameraAPIActivity extends AppCompatActivity {
                 } catch (IOException e) {
                     e.printStackTrace();
                 }
-                //Toast.makeText(CameraAPIActivity.this, "Saved:" + file, Toast.LENGTH_SHORT).show();
                 Intent intent = new Intent(CameraAPIActivity.this,UploadImageActivity.class);
                 intent.putExtra("ImageFrom","gallery");
                 startActivity(intent);
