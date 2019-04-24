@@ -58,6 +58,15 @@ public class UploadImageActivity extends AppCompatActivity {
             }
         });
 
+        ImageView back = findViewById(R.id.backtomain_upload);
+        back.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(UploadImageActivity.this,MainPageActivity.class);
+                startActivity(intent);
+            }
+        });
+
     }
 
     public void showImage(){

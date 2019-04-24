@@ -31,6 +31,7 @@ public class ShowResultClassifyActivity extends AppCompatActivity {
 
     private DatabaseHelper mHelper;
     private SQLiteDatabase mDb;
+    private ImageView typeImage;
 
 
     @Override
@@ -49,7 +50,7 @@ public class ShowResultClassifyActivity extends AppCompatActivity {
 
         loadMushroomData(result);
 
-        ImageView back = findViewById(R.id.backtomain);
+        ImageView back = findViewById(R.id.backtomain_result);
         back.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -57,6 +58,8 @@ public class ShowResultClassifyActivity extends AppCompatActivity {
                 startActivity(intent);
             }
         });
+
+
     }
 
     private void loadMushroomData(String Result){
@@ -97,6 +100,7 @@ public class ShowResultClassifyActivity extends AppCompatActivity {
                 else if(type.equalsIgnoreCase("eat")){
                     typeText.setText("เห็ดรับประทานได้");
                 }
+                loadType(type);
                 loadDataFromAsset(image);
                 Button detailButton = findViewById(R.id.detail_button);
                 detailButton.setOnClickListener(new View.OnClickListener() {
@@ -123,6 +127,18 @@ public class ShowResultClassifyActivity extends AppCompatActivity {
             InputStream ims = getAssets().open(Filename);
             Drawable d = Drawable.createFromStream(ims, null);
             mushroomImage.setImageDrawable(d);
+        } catch (IOException ex) {
+            return;
+        }
+    }
+
+    public void loadType(String t) {
+        typeImage = findViewById(R.id.typee);
+        String fileImage = t+".png";
+        try {
+            InputStream ims = getAssets().open(fileImage);
+            Drawable d = Drawable.createFromStream(ims, null);
+            typeImage.setImageDrawable(d);
         } catch (IOException ex) {
             return;
         }

@@ -4,8 +4,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/newbg3"
-    tools:context="com.example.mushroomtypeclassification.KeepMushroomActivity" >
+    android:background="@drawable/bgnew1"
+    tools:context="com.example.mushroomtypeclassification.KeepMushroomActivity">
 
     <ScrollView
         android:layout_width="match_parent"
@@ -24,7 +24,7 @@
                 android:layout_height="70dp"
                 android:layout_marginLeft="120dp"
                 android:layout_marginTop="10dp"
-                app:srcCompat="@drawable/logo" />
+                app:srcCompat="@drawable/item1" />
 
             <TextView
                 android:id="@+id/keepText"
